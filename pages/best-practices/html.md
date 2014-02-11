@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Best practice - HTML
-categories: best-practice
+title: Best practices - HTML
+categories: best-practices
 ---
 
 # {{ page.title }}
