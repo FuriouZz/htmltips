@@ -1,6 +1,7 @@
 name: HTML/CSS Tips
 author: Christophe MASSOLIN
 url: http://furiouzz.github.io/
+baseurl: /htmltips
 markdown: redcarpet
 pygments: true
 auto: true
