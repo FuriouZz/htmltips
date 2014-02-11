@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Slate is a responsive theme for GitHub Pages" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/stylesheet.css">
+
+    <title>Best practice - CSS</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/FuriouZz/htmltips">View on GitHub</a>
+          <h1 id="project_title"><a href="/">HTML/CSS Tips</a></h1>
+          <h2 id="project_tagline">Some HTML/CSS tips</h2>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Best practice - CSS</h1>
+
+<h2>Create generic <code>class</code></h2>
+
+<p>It&#39;s better to create some classes with few properties than duplicate code or write in html file.</p>
+
+<p>In my website, some elements need to be centered. Instead of duplicate <code>margin: 0 auto;</code>, I will create a class <code>block</code> with this property.</p>
+
+<p><strong>CSS</strong></p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.block</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">600px</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>HTML</strong></p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;header&gt;</span>HEADER<span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;block&quot;</span><span class="nt">&gt;</span>MENU<span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;block diaporama&quot;</span><span class="nt">&gt;</span>DIAPORAMA<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;block content&quot;</span><span class="nt">&gt;</span>CONTENU<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;footer&gt;</span>FOOTER<span class="nt">&lt;/footer&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p>Another good practice, it&#39;s to override this class.</p>
+
+<p><strong>CSS</strong></p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.block</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">600px</span><span class="p">;</span>
+    <span class="k">margin</span><span class="o">:</span> <span class="m">0</span> <span class="k">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.list</span> <span class="nc">.block</span> <span class="p">{</span>
+    <span class="k">width</span><span class="o">:</span> <span class="m">300px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>HTML</strong></p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;wrapper&quot;</span> <span class="na">class=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;header&gt;</span>HEADER<span class="nt">&lt;/header&gt;</span>
+    <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;block&quot;</span><span class="nt">&gt;</span>MENU<span class="nt">&lt;nav&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;block diaporama&quot;</span><span class="nt">&gt;</span>DIAPORAMA<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">&quot;block content&quot;</span><span class="nt">&gt;</span>CONTENU<span class="nt">&lt;/section&gt;</span>
+    <span class="nt">&lt;footer&gt;</span>FOOTER<span class="nt">&lt;/footer&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p>One thing : When you override, try to not break the behavior of the class.</p>
+
+<h2>Clearfix</h2>
+
+<p>Generally, I have a <code>clear</code> generic class. </p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.clear</span> <span class="p">{</span>
+    <span class="k">clear</span><span class="o">:</span><span class="k">both</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Thanks to a great guy named <a href="https://github.com/ayamflow">ayamflow</a>, he redirect me to <a href="http://nicolasgallagher.com/micro-clearfix-hack/">Nicolas Gallagher&#39;s solution</a>.</p>
+
+<p>The solution use <code>after</code> and <code>before</code> pseudo-class.</p>
+
+<p><strong>CSS</strong></p>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.clear</span><span class="nd">:before</span><span class="o">,</span>
+<span class="nc">.clear</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="k">content</span><span class="o">:</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+    <span class="k">display</span><span class="o">:</span> <span class="n">table</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.clear</span><span class="nd">:after</span> <span class="p">{</span>
+    <span class="k">clear</span><span class="o">:</span> <span class="k">both</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">li</span> <span class="p">{</span>
+    <span class="k">float</span><span class="o">:</span><span class="k">left</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>HTML</strong></p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li&gt;</span>Item #1<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>Item #2<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;</span>Item #3<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div>
+
+<p>See <a href="http://nicolasgallagher.com/micro-clearfix-hack/demo/">Nicolas Gallager&#39;s demo</a></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Slate theme maintained by <a href="https://github.com/jsncostello">Jason Costello</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+  </body>
+</html>
