@@ -103,3 +103,12 @@ li {
 {% endhighlight %}
 
 See [Nicolas Gallager's demo](http://nicolasgallagher.com/micro-clearfix-hack/demo/)
+
+## Fix for custom fonts (Chrome)
+
+Maybe you have notice some strange font rendering in your favorite browser. 
+In Chrome browser, I notice my font a little bit bolder. The solution is to set the property `-webkit-font-smoothing`.
+
+[MDN Font-Smooth documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth)
+
+
